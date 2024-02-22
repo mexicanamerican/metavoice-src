@@ -17,6 +17,18 @@ MetaVoice-1B is a 1.2B parameter base model trained on 100K hours of speech for 
 We’re releasing MetaVoice-1B under the Apache 2.0 license, *it can be used without restrictions*.
 
 
+## Quickstart - tl;dr
+
+Web UI
+```bash
+docker-compose up -d ui && docker-compose ps && docker-compose logs -f
+```
+
+Server
+```bash
+docker-compose up -d server && docker-compose ps && docker-compose logs -f
+```
+
 ## Installation  
 
 **Pre-requisites:**
@@ -50,17 +62,18 @@ pip install -e .
 python fam/llm/sample.py --spk_cond_path="assets/bria.mp3" --text="This is a demo of text to speech by MetaVoice-1B, an open-source foundational audio model."
 ```
 
-2. Deploy it on any cloud (AWS/GCP/Azure), using our [inference server](/fam/llm/serving.py) and [UI](/fam/ui/app.py).
+2. Deploy it on any cloud (AWS/GCP/Azure), using our [inference server](/fam/llm/serving.py) or [web UI](/fam/ui/app.py)
 ```bash
 python fam/llm/serving.py
-python fam/ui/app.py 
+python app.py 
 ```
 
 3. Use it via [Hugging Face](https://huggingface.co/metavoiceio)
 
 ## Soon
-- Long form TTS
+- Faster inference ⚡
 - Fine-tuning code
+- Synthesis of arbitrary length text
 
 ## Architecture
 We predict EnCodec tokens from text, and speaker information. This is then diffused up to the waveform level, with post-processing applied to clean up the audio.

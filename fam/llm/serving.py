@@ -25,7 +25,7 @@ from fam.llm.sample import (
     get_second_stage_path,
     sample_utterance,
 )
-from fam.llm.utils import get_default_dtype, get_default_use_kv_cache
+from fam.llm.utils import check_audio_file, get_default_dtype, get_default_use_kv_cache
 
 logger = logging.getLogger(__name__)
 
@@ -88,6 +88,11 @@ class TTSRequest:
     top_k: Optional[int] = None
 
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
+
 @app.post("/tts", response_class=Response)
 async def text_to_speech(req: Request):
     audiodata = await req.body()
@@ -102,6 +107,7 @@ async def text_to_speech(req: Request):
         with tempfile.NamedTemporaryFile(suffix=".wav") as wav_tmp:
             if tts_req.speaker_ref_path is None:
                 wav_path = _convert_audiodata_to_wav_path(audiodata, wav_tmp)
+                check_audio_file(wav_path)
             else:
                 wav_path = tts_req.speaker_ref_path
             if wav_path is None:
@@ -200,7 +206,7 @@ if __name__ == "__main__":
     # start server
     uvicorn.run(
         app,
-        host="127.0.0.1",
+        host="0.0.0.0",
         port=GlobalState.config.port,
         log_level="info",
     )
