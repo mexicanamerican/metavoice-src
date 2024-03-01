@@ -2,7 +2,7 @@
 
 
 <p>
-<a href="https://ttsdemo.themetavoice.xyz/"><b>Playground</b></a> | <a target="_blank" style="display: inline-block; vertical-align: middle" href="https://colab.research.google.com/drive/1UmjE1mzfG4td0rCjJEaAWGQXpn_GuwwY?authuser=0#scrollTo=mPgTfUdBJF1B">
+<a href="https://ttsdemo.themetavoice.xyz/"><b>Playground</b></a> | <a target="_blank" style="display: inline-block; vertical-align: middle" href="https://colab.research.google.com/github/metavoiceio/metavoice-src/blob/main/colab_demo.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a> 
 </p>
@@ -72,7 +72,7 @@ python app.py
 ```
 
 3. Use it via [Hugging Face](https://huggingface.co/metavoiceio)
-4. [Google Collab](https://colab.research.google.com/drive/1UmjE1mzfG4td0rCjJEaAWGQXpn_GuwwY?authuser=0#scrollTo=mPgTfUdBJF1B)
+4. [Google Collab Demo](https://colab.research.google.com/github/metavoiceio/metavoice-src/blob/main/colab_demo.ipynb)
 
 
 ## Upcoming
@@ -103,3 +103,11 @@ The model supports:
 
 ## Acknowledgements
 We are grateful to Together.ai for their 24/7 help in marshalling our cluster. We thank the teams of AWS, GCP & Hugging Face for support with their cloud platforms.
+
+- [A Défossez et. al.](https://arxiv.org/abs/2210.13438) for Encodec.
+- [RS Roman et. al.](https://arxiv.org/abs/2308.02560) for Multiband Diffusion.
+- [@liusongxiang](https://github.com/liusongxiang/ppg-vc/blob/main/speaker_encoder/inference.py) for speaker encoder implementation.
+- [@karpathy](https://github.com/karpathy/nanoGPT) for NanoGPT which our inference implementation is based on.
+- [@Rikorose](https://github.com/Rikorose) for DeepFilterNet.
+
+Apologies in advance if we've missed anyone out. Please let us know if we have.
